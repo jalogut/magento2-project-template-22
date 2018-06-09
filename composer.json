@@ -1,0 +1,116 @@
+{
+  "name": "jalogut/magento2-project-template-2.2",
+  "description": "Magento 2 project template for version >=2.2",
+  "type": "project",
+  "license": [
+    "proprietary"
+  ],
+  "authors": [
+    {
+      "name": "Juan Alonso",
+      "email": "juan.alonso@staempfli.com"
+    }
+  ],
+  "config": {
+    "bin-dir": "bin",
+    "vendor-dir": "magento/vendor",
+    "use-include-path": true,
+    "preferred-install": {
+      "jalogut/*": "source",
+      "staempfli/*": "source",
+      "*": "dist"
+    }
+  },
+  "repositories": [
+    {"type": "composer", "url": "https://repo.magento.com/"}
+  ],
+  "require": {
+    "n98/magerun2": "^1.4",
+    "magento/product-community-edition": "2.2.4",
+    "composer/composer": "@alpha",
+    "jalogut/magento2-deployer-plus": "^1.1",
+    "staempfli/symlinker-pro": "~1.0",
+    "cweagans/composer-patches": "^1.6"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~6.2.0",
+    "staempfli/magento2-builder-tool": "^2.1"
+  },
+  "replace": {
+    "magento/module-admin-notification": "*",
+    "magento/module-dhl": "*",
+    "magento/module-fedex": "*",
+    "magento/module-marketplace": "*",
+    "magento/module-multishipping": "*",
+    "magento/module-persistent": "*",
+    "magento/module-authorizenet": "*",
+    "magento/module-google-adwords": "*",
+    "magento/module-sample-data": "*",
+    "dotmailer/dotmailer-magento2-extension": "*",
+    "magento/module-send-friend": "*",
+    "magento/module-swagger": "*",
+    "magento/module-swatches-layered-navigation": "*",
+    "magento/module-tax-import-export": "*",
+    "magento/module-ups": "*",
+    "magento/module-encryption-key": "*",
+    "magento/module-usps": "*",
+    "magento/module-braintree": "*",
+    "magento/module-webapi-security": "*",
+    "magento/module-weee": "*",
+    "magento/module-catalog-widget": "*",
+    "magento/module-version": "*",
+    "magento/module-release-notification": "*",
+    "vertex/module-tax": "*",
+    "klarna/module-core": "*",
+    "klarna/module-ordermanagement": "*",
+    "klarna/module-kp": "*",
+    "temando/module-shipping-m2": "*"
+  },
+  "extra": {
+    "magento-root-dir": "magento/",
+    "magento-force": "override",
+    "composer-exit-on-patch-failure": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Magento\\Setup\\": "magento/setup/src/Magento/Setup/"
+    },
+    "psr-0": {
+      "": "magento/app/code/"
+    },
+    "files": [
+      "magento/app/etc/NonComposerComponentRegistration.php"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Magento\\Sniffs\\": "magento/dev/tests/static/framework/Magento/Sniffs/",
+      "Magento\\Tools\\": "magento/dev/tools/Magento/Tools/",
+      "Magento\\Tools\\Sanity\\": "magento/dev/build/publication/sanity/Magento/Tools/Sanity/",
+      "Magento\\TestFramework\\Inspection\\": "magento/dev/tests/static/framework/Magento/TestFramework/Inspection/",
+      "Magento\\TestFramework\\Utility\\": "magento/dev/tests/static/framework/Magento/TestFramework/Utility/"
+    }
+  },
+  "scripts": {
+    "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
+    "setPermissionsBin": "chmod -R +x bin magento/bin",
+    "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
+    "pre-install-cmd": [
+        "@preventRunningComposerInMagentoFolder"
+    ],
+    "pre-update-cmd": [
+        "@preventRunningComposerInMagentoFolder"
+    ],
+    "pre-autoload-dump": [
+      "mkdir -p magento/app/etc && cp magento/vendor/magento/magento2-base/app/etc/NonComposerComponentRegistration.php magento/app/etc/NonComposerComponentRegistration.php"
+    ],
+    "post-install-cmd": [
+        "@setPermissionsBin",
+        "@setSymlinks"
+    ],
+    "post-update-cmd": [
+        "@setPermissionsBin",
+        "@setSymlinks"
+    ]
+  }
+}

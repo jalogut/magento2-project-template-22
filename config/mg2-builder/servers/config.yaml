@@ -1,0 +1,4 @@
+IGR:
+  host: <hostname>
+  port: 22
+  rootDir: /home/<host_user>/current
