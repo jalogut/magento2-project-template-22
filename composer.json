@@ -52,7 +52,6 @@
     "magento/module-swatches-layered-navigation": "*",
     "magento/module-tax-import-export": "*",
     "magento/module-ups": "*",
-    "magento/module-encryption-key": "*",
     "magento/module-usps": "*",
     "magento/module-braintree": "*",
     "magento/module-webapi-security": "*",

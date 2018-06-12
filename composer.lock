@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "896976dc6c9494a0d4ba94181cc7e2e2",
+    "content-hash": "d788008470d51cfa01354dfb239bb449",
     "packages": [
         {
             "name": "amzn/amazon-pay-and-login-magento-2-module",
@@ -777,78 +777,6 @@
             ],
             "description": "implementation of xdg base directory specification for php",
             "time": "2014-10-24T07:27:01+00:00"
-        },
-        {
-            "name": "dotmailer/dotmailer-magento2-extension",
-            "version": "2.4.9",
-            "dist": {
-                "type": "zip",
-                "url": "https://repo.magento.com/archives/dotmailer/dotmailer-magento2-extension/dotmailer-dotmailer-magento2-extension-2.4.9.0.zip",
-                "reference": null,
-                "shasum": "abc77a95479312394d83db35698c3d9c07bb759c"
-            },
-            "require": {
-                "magento/framework": ">=100 <102",
-                "magento/module-backend": "100.*",
-                "magento/module-catalog": ">=101 <103",
-                "magento/module-catalog-inventory": "100.*",
-                "magento/module-catalog-rule": ">=100 <102",
-                "magento/module-checkout": "100.*",
-                "magento/module-config": ">=100 <102",
-                "magento/module-cron": "100.*",
-                "magento/module-customer": ">=100 <102",
-                "magento/module-directory": "100.*",
-                "magento/module-eav": ">=100 <102",
-                "magento/module-email": "100.*",
-                "magento/module-newsletter": "100.*",
-                "magento/module-payment": "100.*",
-                "magento/module-product-alert": "100.*",
-                "magento/module-quote": ">=100 <102",
-                "magento/module-reports": "100.*",
-                "magento/module-review": "100.*",
-                "magento/module-rule": "100.*",
-                "magento/module-sales": ">=100 <102",
-                "magento/module-sales-rule": ">=100 <102",
-                "magento/module-send-friend": "100.*",
-                "magento/module-shipping": "100.*",
-                "magento/module-store": "100.*",
-                "magento/module-theme": "100.*",
-                "magento/module-ui": ">=100 <102",
-                "magento/module-user": ">=100 <102",
-                "magento/module-wishlist": ">=100 <102"
-            },
-            "require-dev": {
-                "magento/marketplace-eqp": "dev-master",
-                "phpmd/phpmd": "@stable",
-                "squizlabs/php_codesniffer": "@stable"
-            },
-            "type": "magento2-module",
-            "autoload": {
-                "files": [
-                    "registration.php"
-                ],
-                "psr-4": {
-                    "Dotdigitalgroup\\Email\\": ""
-                }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Calin Diacon",
-                    "email": "calin.diacon@dotmailer.com"
-                },
-                {
-                    "name": "Adeel Qamar",
-                    "email": "adeel.qamar@dotmailer.com"
-                },
-                {
-                    "name": "Zygimantas",
-                    "email": "zygimantas.simkus@dotmailer.com"
-                }
-            ],
-            "description": "dotmailer integration for magento 2"
         },
         {
             "name": "fzaninotto/faker",
@@ -3453,6 +3381,35 @@
             "license": [
                 "OSL-3.0",
                 "AFL-3.0"
+            ],
+            "description": "N/A"
+        },
+        {
+            "name": "magento/module-encryption-key",
+            "version": "100.2.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://repo.magento.com/archives/magento/module-encryption-key/magento-module-encryption-key-100.2.0.0.zip",
+                "reference": null,
+                "shasum": "36110a994559a0f26ff237eaf7e0055d8223af06"
+            },
+            "require": {
+                "magento/framework": "101.0.*",
+                "magento/module-backend": "100.2.*",
+                "magento/module-config": "101.0.*",
+                "php": "7.0.2|7.0.4|~7.0.6|~7.1.0"
+            },
+            "type": "magento2-module",
+            "autoload": {
+                "files": [
+                    "registration.php"
+                ],
+                "psr-4": {
+                    "Magento\\EncryptionKey\\": ""
+                }
+            },
+            "license": [
+                "proprietary"
             ],
             "description": "N/A"
         },
@@ -6613,16 +6570,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.9.5",
+            "version": "v0.9.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106"
+                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/0951e91ac04ca28cf317f3997a0adfc319e80106",
-                "reference": "0951e91ac04ca28cf317f3997a0adfc319e80106",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/4a2ce86f199d51b6e2524214dc06835e872f4fce",
+                "reference": "4a2ce86f199d51b6e2524214dc06835e872f4fce",
                 "shasum": ""
             },
             "require": {
@@ -6681,7 +6638,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2018-06-02T16:39:22+00:00"
+            "time": "2018-06-10T17:57:20+00:00"
         },
         {
             "name": "ramsey/uuid",
@@ -9907,16 +9864,16 @@
         },
         {
             "name": "myclabs/deep-copy",
-            "version": "1.8.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/DeepCopy.git",
-                "reference": "478465659fd987669df0bd8a9bf22a8710e5f1b6"
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/478465659fd987669df0bd8a9bf22a8710e5f1b6",
-                "reference": "478465659fd987669df0bd8a9bf22a8710e5f1b6",
+                "url": "https://api.github.com/repos/myclabs/DeepCopy/zipball/3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
+                "reference": "3e01bdad3e18354c3dce54466b7fbe33a9f9f7f8",
                 "shasum": ""
             },
             "require": {
@@ -9951,7 +9908,7 @@
                 "object",
                 "object graph"
             ],
-            "time": "2018-05-29T17:25:09+00:00"
+            "time": "2018-06-11T23:09:50+00:00"
         },
         {
             "name": "phar-io/manifest",
