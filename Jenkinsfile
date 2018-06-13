@@ -27,6 +27,7 @@ node {
         stage ('Tests') {
             sh "bin/mg2-builder tests-setup:install -Dproject.name=${PROJECT_NAME} -Ddatabase.admin.username=${DATABASE_USER} -Ddatabase.admin.password=${DATABASE_PASS} -Ddatabase.user=${DATABASE_USER} -Ddatabase.password=${DATABASE_PASS} -DskipDbUserCreation"
             parallel (
+                'static': {sh "bin/grumphp run"},
                 'unit': { sh "magento/bin/magento dev:test:run unit" },
                 'integration': { sh "magento/bin/magento dev:test:run integration" },
                 failFast: true

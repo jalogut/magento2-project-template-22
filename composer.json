@@ -34,7 +34,8 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~6.2.0",
-    "staempfli/magento2-builder-tool": "^2.1"
+    "staempfli/magento2-builder-tool": "^2.1",
+    "jalogut/magento2-grumphp-conventions-checker": "^2.2"
   },
   "replace": {
     "magento/module-admin-notification": "*",
@@ -94,6 +95,8 @@
     "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
     "setPermissionsBin": "chmod -R +x bin magento/bin",
     "setSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
+    "grumphpInitProject": "[ ! -e bin/grumphp ] || [ ! -e magento/vendor/jalogut/magento2-grumphp-conventions-checker ] || bin/grumphp git:init",
+    "grumphpInitModules": "[ ! -e bin/grumphp ] || [ ! -e magento/vendor/jalogut/magento2-grumphp-conventions-checker ] || find magento/vendor/jalogut/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && ../../../../bin/grumphp git:init\"",
     "pre-install-cmd": [
         "@preventRunningComposerInMagentoFolder"
     ],
@@ -105,11 +108,15 @@
     ],
     "post-install-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks"
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
     ],
     "post-update-cmd": [
         "@setPermissionsBin",
-        "@setSymlinks"
+        "@setSymlinks",
+        "@grumphpInitProject",
+        "@grumphpInitModules"
     ]
   }
 }
