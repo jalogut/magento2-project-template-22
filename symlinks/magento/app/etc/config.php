@@ -44,6 +44,7 @@ return [
     'Magento_ImportExport' => 1,
     'Magento_Checkout' => 1,
     'Magento_Email' => 1,
+    'Magento_EncryptionKey' => 1,
     'Magento_GiftMessage' => 1,
     'Magento_GoogleAnalytics' => 1,
     'Magento_Ui' => 1,
