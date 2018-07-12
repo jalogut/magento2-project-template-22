@@ -7,7 +7,7 @@ docker-compose up app
 docker-compose exec phpfpm composer install
 docker-compose exec phpfpm bin/mg2-builder install
 sudo vim /etc/hosts
-// 127.0.0.1 magento2-docker.lo
+// Add -> 127.0.0.1 magento2-docker.lo
 ```
 
 ### Temporal workaround for nginx.conf
@@ -16,7 +16,7 @@ sudo vim /etc/hosts
 docker-compose exec -u root app bash
 apt-get update && apt-get install -y nano
 nano /etc/nginx/conf.d/default.conf
-// set $MAGE_ROOT /var/www/html/magento
+// Add "magento" to MAGE_ROOT path -> set $MAGE_ROOT /var/www/html/magento
 Stop container
 docker-compose up app
 ```
