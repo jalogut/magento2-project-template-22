@@ -26,15 +26,15 @@
   ],
   "require": {
     "n98/magerun2": "^1.4",
-    "magento/product-community-edition": "2.2.4",
+    "magento/product-community-edition": "2.2.5",
     "composer/composer": "@alpha",
-    "jalogut/magento2-deployer-plus": "^1.1",
+    "jalogut/magento2-deployer-plus": "^2.1",
     "staempfli/symlinker-pro": "~1.0",
     "cweagans/composer-patches": "^1.6"
   },
   "require-dev": {
     "phpunit/phpunit": "~6.2.0",
-    "staempfli/magento2-builder-tool": "^2.1",
+    "staempfli/magento2-builder-tool": "dev-allow-project-name-provision",
     "jalogut/magento2-grumphp-conventions-checker": "^2.2"
   },
   "replace": {
