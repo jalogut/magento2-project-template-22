@@ -23,6 +23,23 @@ docker-compose up app
 
 Eh voila! -> [http://magento2-docker.lo/](http://magento2-docker.lo/)
 
+### Frontend
+
+1. NPM config setup (Only first time)
+
+	```
+	docker-compose exec nodejsphp bash
+	cd magento && cp package.json.sample package.json && cp 	Gruntfile.js.sample Gruntfile.js
+	npm install
+	```
+
+2. Grunt watch
+
+	```
+	docker-compose exec nodejsphp bash
+	grunt exec:<theme>
+	grunt watch
+	```
 
 ## Setup using following resources:
 
