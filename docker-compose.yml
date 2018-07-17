@@ -10,11 +10,11 @@ services:
       - ~/.ssh:/root/.ssh:delegated
       - ~/.ssh/config:/var/www/workaround
       - sockdata:/sock
-      - app-vendor:/var/www/html/vendor
-      - app-generated:/var/www/html/generated
-      - app-var:/var/www/html/var
-      - pub-static:/var/www/html/pub/static
-      - pub-media:/var/www/html/pub/media
+      - app-vendor:/var/www/html/magento/vendor
+      - app-generated:/var/www/html/magento/generated
+      - app-var:/var/www/html/magento/var
+      - pub-static:/var/www/html/magento/pub/static
+      - pub-media:/var/www/html/magento/pub/media
 
   app:
     image: markoshust/magento-nginx:1.13-3
