@@ -1,6 +1,6 @@
 FROM alpine:latest
 
-RUN mkdir -p /var/www/html/vendor \
+RUN mkdir -p /var/www/html/magento/vendor \
     /var/www/html/magento/generated \
     /var/www/html/magento/var \
     /var/www/html/magento/pub/static \
