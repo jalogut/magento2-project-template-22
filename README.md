@@ -36,7 +36,7 @@ Eh voila! -> [http://magento2-docker.lo/](http://magento2-docker.lo/)
 2. Grunt watch
 
 	```
-	docker-compose exec nodejsphp bash
+	docker-compose exec node bash
 	grunt exec:<theme>
 	grunt watch
 	```

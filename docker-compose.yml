@@ -57,7 +57,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
 
-  nodejsphp:
+  node:
       build: ./config/docker/image/nodejs-php
       links:
         - app
