@@ -17,7 +17,7 @@ services:
       - pub-media:/var/www/html/magento/pub/media
 
   app:
-    image: markoshust/magento-nginx:1.13-3
+    build: ./config/docker/image/nginx
     ports:
       - 80:8000
     links:
