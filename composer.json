@@ -34,7 +34,7 @@
   },
   "require-dev": {
     "phpunit/phpunit": "~6.2.0",
-    "staempfli/magento2-builder-tool": "dev-allow-project-name-provision",
+    "staempfli/magento2-builder-tool": "~2.1.3",
     "jalogut/magento2-grumphp-conventions-checker": "^2.2"
   },
   "replace": {

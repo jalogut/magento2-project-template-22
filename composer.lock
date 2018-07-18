@@ -1,10 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "194590de2a220d0b2117090244905dbf",
+    "content-hash": "0887c294370629011da04d01c257b138",
     "packages": [
         {
             "name": "amzn/amazon-pay-and-login-magento-2-module",
@@ -11412,16 +11412,16 @@
         },
         {
             "name": "staempfli/magento2-builder-tool",
-            "version": "dev-allow-project-name-provision",
+            "version": "2.1.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/staempfli/magento2-builder-tool.git",
-                "reference": "53d30f55d3cd929fa7d8160705f0e8b2210e03a6"
+                "reference": "0ffff6320013f522a5c3410b3cfb52afe118c08d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/staempfli/magento2-builder-tool/zipball/53d30f55d3cd929fa7d8160705f0e8b2210e03a6",
-                "reference": "53d30f55d3cd929fa7d8160705f0e8b2210e03a6",
+                "url": "https://api.github.com/repos/staempfli/magento2-builder-tool/zipball/0ffff6320013f522a5c3410b3cfb52afe118c08d",
+                "reference": "0ffff6320013f522a5c3410b3cfb52afe118c08d",
                 "shasum": ""
             },
             "require": {
@@ -11451,7 +11451,7 @@
                 "sync",
                 "tool"
             ],
-            "time": "2018-07-12T12:27:37+00:00"
+            "time": "2018-07-18T13:00:25+00:00"
         },
         {
             "name": "symfony/config",
@@ -11717,8 +11717,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "composer/composer": 15,
-        "staempfli/magento2-builder-tool": 20
+        "composer/composer": 15
     },
     "prefer-stable": false,
     "prefer-lowest": false,
