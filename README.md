@@ -10,17 +10,6 @@ sudo vim /etc/hosts
 // Add -> 127.0.0.1 magento2-docker.lo
 ```
 
-### Temporal workaround for nginx.conf
-
-```
-docker-compose exec -u root app bash
-apt-get update && apt-get install -y nano
-nano /etc/nginx/conf.d/default.conf
-// Add "magento" to MAGE_ROOT path -> set $MAGE_ROOT /var/www/html/magento
-Stop container
-docker-compose up app
-```
-
 Eh voila! -> [http://magento2-docker.lo/](http://magento2-docker.lo/)
 
 ### Frontend
