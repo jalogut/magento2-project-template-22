@@ -9,4 +9,4 @@
 DIFF=$(git -c diff.mnemonicprefix=false --no-pager diff -r -p -m -M --full-index --no-color --staged | cat)
 
 # Run GrumPHP
-(cd "./" && printf "%s\n" "${DIFF}" | docker-compose exec -T phpfpm 'php' 'bin/grumphp' 'git:pre-commit' '--skip-success-output')
+(cd "${HOOK_EXEC_PATH}" && printf "%s\n" "${DIFF}" | docker-compose exec -T phpfpm 'php' 'bin/grumphp' 'git:pre-commit' '--skip-success-output')
