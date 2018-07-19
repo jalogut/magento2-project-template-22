@@ -7,7 +7,7 @@ services:
       - .:/var/www/html:delegated
       - ~/.composer:/var/www/html/magento/var/composer_home:delegated
       - ~/.composer:/var/www/.composer:delegated
-      - ~/.ssh:/root/.ssh:delegated
+      - ~/.ssh:/var/www/.ssh:delegated
       - ~/.ssh/config:/var/www/workaround
       - sockdata:/sock
       - app-vendor:/var/www/html/magento/vendor
