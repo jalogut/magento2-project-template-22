@@ -1,6 +1,5 @@
 parameters:
     magento_dir: magento
     vendor_dir: magento/vendor
-    hooks_dir: config/grumphp/hooks/docker
 imports:
     - { resource: magento/vendor/jalogut/magento2-grumphp-conventions-checker/magento2-project-grumphp.yml }
