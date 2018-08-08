@@ -127,7 +127,7 @@ log_heading "Generating Unison profile"
 [ -d "${HOME}/.unison" ] || mkdir -p ${HOME}/.unison
 
 unisonsilent="true"
-if [[ "$SYNC_VERBOSE" == "0" ]]; then
+if [[ "$SYNC_VERBOSE" == "1" ]]; then
   unisonsilent="false"
 fi
 
