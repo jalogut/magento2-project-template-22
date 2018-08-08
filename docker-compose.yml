@@ -37,17 +37,6 @@ services:
     depends_on:
       - db
 
-  cron:
-    image: markoshust/magento-php:7.0-fpm-3
-    user: root
-    command: /usr/local/bin/cronstart
-    tty: true
-    links:
-      - db
-    volumes: *appvolumes
-    depends_on:
-      - db
-
   db:
     image: mysql:5.7
     ports:
@@ -67,19 +56,20 @@ services:
       depends_on:
         - app
 
-  vendor-sync:
-    image: cweagans/bg-sync
+  sync:
+    build: ./config/docker/image/sync
     volumes:
       - app-vendor:/var/www/html/magento/vendor
-      - ./magento/vendor:/source
+      - app-generated:/var/www/html/magento/generated
+      - ./magento/vendor:/sync/magento/vendor
+      - ./magento/generated:/sync/magento/generated
     environment:
-      - SYNC_DESTINATION=/var/www/html/magento/vendor
+      - SYNC_SOURCE_BASE_PATH=/sync/magento
+      - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
       - SYNC_MAX_INOTIFY_WATCHES=40000
       - SYNC_VERBOSE=1
       - SYNC_PREFER=newer
       - SYNC_NODELETE_SOURCE=0
-      - UNISON_GID=1000
-      - UNISON_UID=1000
     depends_on:
       - app
       - phpfpm
@@ -94,4 +84,3 @@ volumes:
   app-var:
   pub-static:
   pub-media:
-
