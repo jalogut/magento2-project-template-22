@@ -5,7 +5,6 @@ services:
     build: ./config/docker/image/app-volumes
     volumes: &appvolumes
       - .:/var/www/html:delegated
-      - ~/.composer:/var/www/html/magento/var/composer_home:delegated
       - ~/.composer:/var/www/.composer:delegated
       - ~/.ssh:/var/www/.ssh:delegated
       - ~/.ssh/config:/var/www/workaround
