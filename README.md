@@ -38,15 +38,21 @@ Example: `docker-compose exec sync "watch -path vendor/<company_name>/<module_na
 
 ### Frontend
 
-1. NPM config setup (Only first time)
+0. Start node container
 
 	```
-	docker-compose exec nodejsphp bash
+	docker-compose up node
+	```
+
+0. NPM config setup (Only first time)
+
+	```
+	docker-compose exec node bash
 	cd magento && cp package.json.sample package.json && cp Gruntfile.js.sample Gruntfile.js
 	npm install
 	```
 
-2. Grunt watch
+0. Grunt watch
 
 	```
 	docker-compose exec node bash
