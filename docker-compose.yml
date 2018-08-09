@@ -28,6 +28,7 @@ services:
       - app-volumes
       - phpfpm
       - db
+      - sync
 
   phpfpm:
     image: markoshust/magento-php:7.0-fpm-3
@@ -35,6 +36,7 @@ services:
       - db
     volumes: *appvolumes
     depends_on:
+      - app-volumes
       - db
 
   db:
@@ -46,16 +48,6 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
 
-  node:
-      build: ./config/docker/image/nodejs-php
-      links:
-        - app
-      volumes: *appvolumes
-      environment:
-        - NPM_CONFIG_PREFIX=/home/node/.npm-global # To avoid permission error on npm install. It tries to save it at /var/www (root is the owner)
-      depends_on:
-        - app
-
   sync:
     build: ./config/docker/image/sync
     volumes:
@@ -66,15 +58,18 @@ services:
     environment:
       - SYNC_SOURCE_BASE_PATH=/sync/magento
       - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
-      - SYNC_MAX_INOTIFY_WATCHES=40000
-      - SYNC_VERBOSE=1
-      - SYNC_PREFER=newer
-      - SYNC_NODELETE_SOURCE=0
-    depends_on:
-      - app
-      - phpfpm
-      - app-volumes
+      - SYNC_MAX_INOTIFY_WATCHES=60000
     privileged: true
+
+  node:
+      build: ./config/docker/image/nodejs-php
+      links:
+        - app
+      volumes: *appvolumes
+      environment:
+        - NPM_CONFIG_PREFIX=/home/node/.npm-global # To avoid permission error on npm install. It tries to save it at /var/www (root is the owner)
+      depends_on:
+        - app
 
 volumes:
   dbdata:

@@ -1,5 +1,5 @@
 FROM alpine:3.5
-MAINTAINER Cameron Eagans <me@cweagans.net>
+MAINTAINER Juan Alonso <juan.jalogut@gmail.com>
 
 # Install needed packages.
 #RUN apt-get -qq update && \
@@ -23,21 +23,20 @@ RUN apk add --no-cache --virtual .build-dependencies build-base curl && \
     apk del .build-dependencies ocaml && \
     rm -rf /tmp/unison-${UNISON_VERSION}
 
-RUN addgroup -g 1000 -S app \
- && adduser -u 1000 -D -S -G app app
+COPY scripts/init_sync_config.sh /usr/local/bin/init_sync_config
+RUN chmod +x /usr/local/bin/init_sync_config
 
-# Copy the bg-sync script into the container.
-COPY sync.sh /usr/local/bin/sync
+COPY scripts/sync.sh /usr/local/bin/sync
 RUN chmod +x /usr/local/bin/sync
 
-COPY watch.sh /usr/local/bin/watch
+COPY scripts/watch.sh /usr/local/bin/watch
 RUN chmod +x /usr/local/bin/watch
+
+RUN addgroup -g 1000 -S app \
+ && adduser -u 1000 -D -S -G app app
 
 RUN mkdir -p /home/app/.unison
 RUN touch /home/app/unison.log
 RUN chown -R app:app /home/app
 
-ENV HOME="/home/app" UNISON_USER="app"
-
-#CMD ["bg-sync"]
-CMD tail -f /home/app/unison.log
+CMD init_sync_config && tail -f /dev/null
