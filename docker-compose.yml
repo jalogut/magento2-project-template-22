@@ -20,9 +20,6 @@ services:
     build: ./config/docker/image/nginx
     ports:
       - 80:8000
-    links:
-      - phpfpm
-      - db
     volumes: *appvolumes
     depends_on:
       - app-volumes
@@ -32,8 +29,6 @@ services:
 
   phpfpm:
     image: markoshust/magento-php:7.0-fpm-3
-    links:
-      - db
     volumes: *appvolumes
     depends_on:
       - app-volumes
@@ -63,8 +58,6 @@ services:
 
   node:
       build: ./config/docker/image/nodejs-php
-      links:
-        - app
       volumes: *appvolumes
       environment:
         - NPM_CONFIG_PREFIX=/home/node/.npm-global # To avoid permission error on npm install. It tries to save it at /var/www (root is the owner)
