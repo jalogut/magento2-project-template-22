@@ -4,17 +4,21 @@ services:
   app-volumes:
     build: ./config/docker/image/app-volumes
     volumes: &appvolumes
-      - .:/var/www/html:delegated
       - ~/.composer:/var/www/.composer:delegated
-      - ~/.ssh:/var/www/.ssh:delegated
-      - ~/.ssh/config:/var/www/workaround
       - sockdata:/sock
-      - app-vendor:/var/www/html/magento/vendor
-      - app-generated:/var/www/html/magento/generated
-      - app-var:/var/www/html/magento/var
-      - pub-static:/var/www/html/magento/pub/static
-      - pub-media:/var/www/html/magento/pub/media
-      - integration-test-sandbox:/var/www/html/magento/dev/tests/integration/tmp
+      - app-magento:/var/www/html/magento
+      - .git:/var/www/html/.git:delegated
+      - ./bin:/var/www/html/bin:delegated
+      - ./config:/var/www/html/config:delegated
+      - ./logs:/var/www/html/logs:delegated
+      - ./magento/app:/var/www/html/magento/app:delegated
+      - ./symlinks:/var/www/html/symlinks:delegated
+      - ./auth.json:/var/www/html/auth.json:delegated
+      - ./composer.json:/var/www/html/composer.json:delegated
+      - ./composer.lock:/var/www/html/composer.lock:delegated
+      - ./deploy.php:/var/www/html/deploy.php:delegated
+      - ./grumphp.yml:/var/www/html/grumphp.yml:delegated
+      - ./magento:/sync/magento
 
   app:
     build: ./config/docker/image/nginx
@@ -44,11 +48,7 @@ services:
 
   unison:
     image: modestcoders/unison:2.51.2
-    volumes:
-      - app-vendor:/var/www/html/magento/vendor
-      - app-generated:/var/www/html/magento/generated
-      - ./magento/vendor:/sync/magento/vendor
-      - ./magento/generated:/sync/magento/generated
+    volumes: *appvolumes
     environment:
       - SYNC_SOURCE_BASE_PATH=/sync/magento
       - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
@@ -58,19 +58,12 @@ services:
     privileged: true
 
   node:
-    build: ./config/docker/image/node
+    image: modestcoders/node-php:node8-php7.1
     volumes: *appvolumes
-    environment:
-      - NPM_CONFIG_PREFIX=/home/app/.npm-global # To avoid permission error on npm install.
     depends_on:
       - app-volumes
 
 volumes:
   dbdata:
   sockdata:
-  app-vendor:
-  app-generated:
-  app-var:
-  pub-static:
-  pub-media:
-  integration-test-sandbox:
+  app-magento:

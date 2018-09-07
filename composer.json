@@ -95,7 +95,7 @@
     "preventRunningComposerInMagentoFolder": "[ ! $(basename `pwd`) = 'magento' ] || { echo 'Checking current dir is not magento folder'; exit 1; }",
     "setPermissionsBin": "chmod -R +x bin magento/bin",
     "magentoSymlinks": "bin/symlinker-pro create:from:file config/symlinks/magento.symlinks -f --enable-wildcards",
-    "grumphpTemplatesDocker": "[ $PWD = '/var/www/html' ] && cp -Rf config/grumphp/hooks/docker/* magento/vendor/phpro/grumphp/resources/hooks/local/ || exit 0;",
+    "grumphpTemplatesDocker": "[ ! -e bin/grumphp ] || [ $PWD = '/var/www/html' ] && cp -Rf config/grumphp/hooks/docker/* magento/vendor/phpro/grumphp/resources/hooks/local/ || exit 0;",
     "grumphpInitProject": "[ ! -e bin/grumphp ] || [ ! -e magento/vendor/jalogut/magento2-grumphp-conventions-checker ] || bin/grumphp git:init",
     "grumphpInitModules": "[ ! -e bin/grumphp ] || [ ! -e magento/vendor/jalogut/magento2-grumphp-conventions-checker ] || find magento/vendor/jalogut/* -type f -name grumphp.yml -maxdepth 1 -exec dirname {} \\; | xargs -I{} bash -c \"cd '{}' && ../../../../bin/grumphp git:init\"",
     "pre-install-cmd": [

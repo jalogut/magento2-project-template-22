@@ -1,62 +1,69 @@
 # Magento 2 Project template for versions >=2.2
 
-## Docker Development
+# Installation
 
-### Docker installation
+There are 2 installation options. Just use the one you prefer:
 
-```
-docker-compose up app
-docker-compose exec phpfpm composer install
-docker-compose exec phpfpm bin/mg2-builder install
-sudo vim /etc/hosts
-// Add -> 127.0.0.1 magento2-docker.lo
-```
+* Local installation
+* Docker installation
 
-Eh voila! -> [http://magento2-docker.lo/](http://magento2-docker.lo/)
+## Local Installation
 
-### Sync vendor and generated
+0. Clone repository and run composer install
 
-There are 2 options to sync the volumes `vendor` and `generated`
+	```
+	git clone https://github.com/jalogut/magento2-project-template-22.git magento2-template
+	cd magento2-template
+	composer install
+	```
 
-#### Option 1: One time sync
+0. Execute [mg2-builder](https://github.com/staempfli/magento2-builder-tool) task to setup a new project:
 
-This option must be used most of the times. You should only need to sync `vendor` and `generated` from time to time for debugging purposes
+    ```
+    bin/mg2-builder install
+    ```
 
-```
-docker-compose run --rm unison sync -path <path_to_sync>
-```
+0. Set the new host:
+	* `sudo vim /etc/hosts`
+	* add `127.0.0.1 magento2-template.lo`
 
-**NOTE:** `<path_to_sync>` should be `vendor` or `generated`. For faster and more specific syncs, you can include the subfolder path inside `vendor` like `sync -path vendor/<company_name>`.
-
-#### Option 2: Watch
-
-This option is only recommended if you are implementing code in a vendor module.
-
-```
-docker-compose run --rm unison watch -path <path_to_sync>
-```
-
-Example: `docker-compose run --rm unison watch -path vendor/<company_name>/<module_name>`
+0. Restart Apache/Nginx
 
 ### Frontend
 
-1. NPM config setup (Only first time)
+* [Frontend Documentation](docs/local-install/frontend.md)
+
+## Docker Installation
+
+1. Configure your docker `File Sharing` settings
+
+	![File Sharing Configuration](docs/docker-install/img/file_sharing.png)
+	
+	NOTE: You do not need to have `Composer` installed. You only need to create a `.composer` folder in your computer, so it can be used by containers to cache composer dependencies instead of downloading them every time.
+
+2. Install [magento2-dockergento-console](https://github.com/ModestCoders/magento2-dockergento-console) in your pc.
+
+3. Execute
 
 	```
-	docker-compose run --rm node sh -c "cd magento \
-	    && cp -n package.json.sample package.json \
-        && cp -n Gruntfile.js.sample Gruntfile.js \
-        && npm install"
+	git clone https://github.com/jalogut/magento2-project-template-22.git magento2-docker
+	cd magento2-docker
+	dockergento start
+	dockergento composer install
+	dockergento exec bin/mg2-builder install
+	sudo vim /etc/hosts
+	// Add -> 127.0.0.1 magento2-docker.lo
 	```
 
-2. Grunt watch
+Eh voila! -> [http://magento2-docker.lo/](http://magento2-docker.lo/)
 
-	```
-	docker-compose run --rm node sh "cd magento && grunt exec:<theme>"
-	docker-compose run --rm node sh "cd magento && grunt watch"
-	```
+### Workflow
 
-## Setup using following resources:
+See detailed documentation about development workflow with dockergento
+
+* `magento2-dockergento-console` > [Development Workflow](https://github.com/ModestCoders/magento2-dockergento-console/blob/master/docs/workflow.md)
+
+## Resources and tools used for this setup
 
 ### Proper Magento 2 Composer Setup
 
@@ -69,3 +76,7 @@ Example: `docker-compose run --rm unison watch -path vendor/<company_name>/<modu
 ### Magento 2 Deployer Plus
 
 * [https://github.com/jalogut/magento2-deployer-plus](https://github.com/jalogut/magento2-deployer-plus)
+
+### Magento 2 Dockergento
+
+* [https://github.com/ModestCoders/magento2-dockergento](https://github.com/ModestCoders/magento2-dockergento)
