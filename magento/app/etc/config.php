@@ -5,6 +5,7 @@ return [
         'Magento_Eav' => 1,
         'Magento_Directory' => 1,
         'Magento_Config' => 1,
+        'Mage2Tv_CacheClean' => 1,
         'Magento_AdvancedPricingImportExport' => 1,
         'Magento_Backend' => 1,
         'Magento_Authorization' => 1,

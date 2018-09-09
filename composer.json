@@ -35,7 +35,8 @@
   "require-dev": {
     "phpunit/phpunit": "~6.2.0",
     "staempfli/magento2-builder-tool": "~2.1.3",
-    "jalogut/magento2-grumphp-conventions-checker": "^2.2"
+    "jalogut/magento2-grumphp-conventions-checker": "^2.2",
+    "mage2tv/magento-cache-clean": "^0.0.10"
   },
   "replace": {
     "magento/module-admin-notification": "*",

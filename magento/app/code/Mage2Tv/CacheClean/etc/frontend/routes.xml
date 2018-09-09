@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * routes
+ *
+ * @copyright Copyright © 2017 Staempfli AG. All rights reserved.
+ * @author    juan.alonso@gmail.com
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+    <router id="standard">
+        <route id="mage2tv_cacheclean" frontName="mage2tv_cacheclean">
+            <module name="Mage2Tv_CacheClean"/>
+        </route>
+    </router>
+</config>

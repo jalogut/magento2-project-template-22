@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * mage2tv_cacheclean_aboutus_index.xml
+ *
+ * @copyright Copyright © 2017 Staempfli AG. All rights reserved.
+ * @author    juan.alonso@gmail.com
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Mage2Tv\CacheClean\Block\AboutUs" name="mage2tv.cacheclean.aboutus" />
+        </referenceContainer>
+    </body>
+</page>

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0887c294370629011da04d01c257b138",
+    "content-hash": "876935c9262f1ea33ddb5603b1452800",
     "packages": [
         {
             "name": "amzn/amazon-pay-and-login-magento-2-module",
@@ -5246,12 +5246,6 @@
         {
             "name": "magento/product-community-edition",
             "version": "2.2.5",
-            "dist": {
-                "type": "zip",
-                "url": "https://repo.magento.com/archives/magento/product-community-edition/magento-product-community-edition-2.2.5.0.zip",
-                "reference": null,
-                "shasum": "fc909c5310bf5c43719bb59ae2c73b06f4d92742"
-            },
             "require": {
                 "amzn/amazon-pay-and-login-magento-2-module": "^2.0.4",
                 "braintree/braintree_php": "3.28.0",
@@ -9749,6 +9743,47 @@
             ],
             "description": "Magento2 Grumphp Conventions Checker",
             "time": "2018-06-13T15:50:17+00:00"
+        },
+        {
+            "name": "mage2tv/magento-cache-clean",
+            "version": "0.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mage2tv/magento-cache-clean.git",
+                "reference": "9a7a0ca60831faae98991119546b3809a2f2cc28"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mage2tv/magento-cache-clean/zipball/9a7a0ca60831faae98991119546b3809a2f2cc28",
+                "reference": "9a7a0ca60831faae98991119546b3809a2f2cc28",
+                "shasum": ""
+            },
+            "suggest": {
+                "magento/project-community-edition": "*"
+            },
+            "bin": [
+                "bin/cache-clean.js"
+            ],
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Vinai Kopp",
+                    "email": "vinai@netzarbeiter.com",
+                    "role": "lead"
+                }
+            ],
+            "description": "A faster drop in replacement for bin/magento cache:clean with file watcher",
+            "homepage": "https://github.com/mage2tv/magento-cache-clean",
+            "keywords": [
+                "development",
+                "magento",
+                "utility"
+            ],
+            "time": "2018-08-22T17:30:45+00:00"
         },
         {
             "name": "myclabs/deep-copy",

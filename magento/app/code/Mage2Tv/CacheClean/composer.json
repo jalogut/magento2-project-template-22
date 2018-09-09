@@ -1,0 +1,16 @@
+{
+  "name": "mage2tv/magento2-module-cacheclean",
+  "description": "Mage2Tv Magento2 module CacheClean",
+  "require": {
+    "php": "~7.0.0"
+  },
+  "type": "magento2-module",
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Mage2Tv\\CacheClean\\": ""
+    }
+  }
+}
