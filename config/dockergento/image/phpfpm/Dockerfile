@@ -1,4 +1,4 @@
-FROM modestcoders/php:7.1-fpm
+FROM modestcoders/php:7.1-fpm-1
 
 USER root:root
 

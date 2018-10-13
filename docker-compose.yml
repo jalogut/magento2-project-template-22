@@ -1,41 +1,24 @@
 version: "3"
 
 services:
-  app-volumes:
-    build: ./config/docker/image/app-volumes
+  phpfpm:
+    build: ./config/dockergento/image/phpfpm 
     volumes: &appvolumes
-      - ~/.composer:/var/www/.composer:delegated
+      - ../.composer:/var/www/.composer
       - sockdata:/sock
-      - app-magento:/var/www/html/magento
-      - .git:/var/www/html/.git:delegated
-      - ./bin:/var/www/html/bin:delegated
-      - ./config:/var/www/html/config:delegated
-      - ./logs:/var/www/html/logs:delegated
-      - ./magento/app:/var/www/html/magento/app:delegated
-      - ./symlinks:/var/www/html/symlinks:delegated
-      - ./auth.json:/var/www/html/auth.json:delegated
-      - ./composer.json:/var/www/html/composer.json:delegated
-      - ./composer.lock:/var/www/html/composer.lock:delegated
-      - ./deploy.php:/var/www/html/deploy.php:delegated
-      - ./grumphp.yml:/var/www/html/grumphp.yml:delegated
-      - ./magento:/sync/magento
+      - ./config/dockergento/nginx/conf/default.conf:/var/www/conf/nginx/default.conf
+    environment:
+      PHP_IDE_CONFIG: serverName=localhost
+    depends_on:
+      - db
 
-  app:
-    build: ./config/docker/image/nginx
+  nginx:
+    image: modestcoders/nginx:1.13
     ports:
       - 80:8000
     volumes: *appvolumes
     depends_on:
       - phpfpm
-
-  phpfpm:
-    build: ./config/docker/image/phpfpm
-    volumes: *appvolumes
-    environment:
-      PHP_IDE_CONFIG: serverName=localhost
-    depends_on:
-      - app-volumes
-      - db
 
   db:
     image: mysql:5.7
@@ -43,27 +26,18 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: magento
+      MYSQL_USER: magento
+      MYSQL_PASSWORD: magento
     volumes:
       - dbdata:/var/lib/mysql
-
-  unison:
-    image: modestcoders/unison:2.51.2
-    volumes: *appvolumes
-    environment:
-      - SYNC_SOURCE_BASE_PATH=/sync/magento
-      - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
-      - SYNC_MAX_INOTIFY_WATCHES=60000
-    depends_on:
-      - app-volumes
-    privileged: true
 
   node:
     image: modestcoders/node-php:node8-php7.1
     volumes: *appvolumes
     depends_on:
-      - app-volumes
+      - phpfpm
 
 volumes:
   dbdata:
   sockdata:
-  app-magento:

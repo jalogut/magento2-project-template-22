@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  phpfpm:
+    volumes: &appvolumes-mac
+      - ../.composer:/var/www/.composer:delegated
+      - workspace:/var/www/html
+      - ./magento/app:/var/www/html/magento/app:delegated
+      - ./.git:/var/www/html/.git:delegated
+      - ./config:/var/www/html/config:delegated
+      - ./composer.json:/var/www/html/composer.json:delegated
+      - ./composer.lock:/var/www/html/composer.lock:delegated
+      - ./.gitignore:/var/www/html/.gitignore:delegated
+      - ./Jenkinsfile:/var/www/html/Jenkinsfile:delegated
+      - ./README.md:/var/www/html/README.md:delegated
+      - ./auth.json:/var/www/html/auth.json:delegated
+      - ./deploy.php:/var/www/html/deploy.php:delegated
+      - ./docs:/var/www/html/docs:delegated
+      - ./grumphp.yml:/var/www/html/grumphp.yml:delegated
+      - ./logs:/var/www/html/logs:delegated
+      - ./symlinks:/var/www/html/symlinks:delegated
+
+  nginx:
+    volumes: *appvolumes-mac
+
+  node:
+    volumes: *appvolumes-mac
+
+  unison:
+    image: modestcoders/unison:2.51.2
+    volumes:
+      - workspace:/var/www/html
+      - ./magento/vendor:/sync/magento/vendor
+    environment:
+      - SYNC_SOURCE_BASE_PATH=/sync/magento
+      - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
+      - SYNC_MAX_INOTIFY_WATCHES=60000
+    depends_on:
+      - phpfpm
+    privileged: true
+
+volumes:
+  workspace:
