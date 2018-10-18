@@ -32,8 +32,8 @@ services:
       - workspace:/var/www/html
       - ./magento/vendor:/sync/magento/vendor
     environment:
-      - SYNC_SOURCE_BASE_PATH=/sync/magento
-      - SYNC_DESTINATION_BASE_PATH=/var/www/html/magento
+      - SYNC_SOURCE_BASE_PATH=/sync
+      - SYNC_DESTINATION_BASE_PATH=/var/www/html
       - SYNC_MAX_INOTIFY_WATCHES=60000
     depends_on:
       - phpfpm

@@ -2,7 +2,7 @@ version: "3"
 
 services:
   phpfpm:
-    build: ./config/dockergento/image/phpfpm 
+    build: ./config/dockergento/image/phpfpm
     volumes: &appvolumes
       - ../.composer:/var/www/.composer
       - sockdata:/sock
